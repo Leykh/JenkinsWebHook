@@ -1,9 +1,5 @@
 pipeline {
-    agent  {
-        docker {
-          image 'node:10.11.0-alpine'
-        }
-    }
+    agent any
     stages {
         stage('Build') {
             steps {
@@ -14,15 +10,15 @@ pipeline {
         stage('Tests') {
             steps {
                 echo "Etape de test github"
-                sh './scripts/test.sh'
+                sh './jenkins/scripts/test.sh'
             }
         }
         stage ('Deploy') {
             steps {
                 echo "Etape de déploiement github"
-                sh './scripts/deploy.sh' 
+                sh './jenkins/scripts/deliver.sh' 
                 input message: 'Finished using the web site? (Click "Proceed" to continue)' 
-                sh './scripts/kill.sh' 
+                sh './jenkins/scripts/kill.sh' 
             }
         }
     }
