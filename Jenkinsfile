@@ -4,13 +4,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Etape de build github"
-                //sh 'npm install'
+                sh 'chmod +x npm install'
             }
         }
         stage('Tests') {
             steps {
                 echo "Etape de test github"
-                sh 'scripts/test.sh'
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh ' ./scripts/test.sh'
             }
         }
         stage ('Deploy') {
