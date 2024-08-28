@@ -10,7 +10,7 @@ pipeline {
         stage('Tests') {
             steps {
                 echo "Etape de test github"
-                sh './jenkins/scripts/test.sh'
+                sh 'scripts/test.sh'
             }
         }
         stage ('Deploy') {
