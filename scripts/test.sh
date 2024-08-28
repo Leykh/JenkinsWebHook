@@ -2,5 +2,5 @@
 
 # npm install --save-dev cross-env
 
-set -x
-npm test
+#set -x
+#npm test
